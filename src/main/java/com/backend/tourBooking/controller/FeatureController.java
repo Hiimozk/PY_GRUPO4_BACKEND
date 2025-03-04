@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/features")
+@CrossOrigin(origins = "http://localhost:5173")
 public class FeatureController {
 
     @Autowired
@@ -36,8 +37,9 @@ public class FeatureController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteFeature(@PathVariable Long id) {
+    public ResponseEntity<String> deleteFeature(@PathVariable Long id) {
         service.deleteFeature(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Feature eliminada exitosamente");
     }
+
 }
